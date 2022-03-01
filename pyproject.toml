@@ -22,7 +22,8 @@ classifiers = [
 
 [tool.poetry.dependencies]
 # See https://python-poetry.org/docs/dependency-specification/
-python = "^3.6.1"
+python = "^3.8.0"
+numpy = "^1.22.2"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.2.0"
@@ -37,6 +38,8 @@ mistune = "<2.0.0"
 m2r = "^0.2"
 # used in docs to parse pyproject.toml
 tomlkit = "^0.6"
+black = "^22.1.0"
+mypy = "^0.931"
 
 [tool.black]
 line-length = 88
@@ -61,6 +64,7 @@ line_length = 88
 # Directories that are not visited by pytest collector:
 norecursedirs = "*.egg .eggs dist build docs .tox .git __pycache__"
 
+
 # Extra options:
 addopts = [
   "--strict-markers",
@@ -71,3 +75,10 @@ addopts = [
   "--cov-branch",
   "--cov-append",
   ]
+
+[tool.mypy]
+strict = true
+namespace_packages = true
+ignore_missing_imports = true
+follow_imports = "normal"
+plugins = "numpy.typing.mypy_plugin"
